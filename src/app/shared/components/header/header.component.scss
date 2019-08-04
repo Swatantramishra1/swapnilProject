@@ -1,0 +1,37 @@
+:host {
+  --header-container-width: 100vw;
+  --header-container-height: calc(100vh - 90%);
+  --header-container-bg-color: black;
+  --header-container-padding: 24px;
+
+  --img-width: 200px;
+  --img-height: 70px;
+
+  --header-a-color: white;
+
+  .flex {
+    display: flex;
+  }
+
+  .headerContainer {
+    height: var(--header-container-height);
+    width: var(--header-container-width);
+    background-color: var(--header-container-bg-color);
+    padding: var(--header-container-padding);
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+
+    img {
+      width: var(--img-width);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--header-a-color);
+    }
+  }
+}
