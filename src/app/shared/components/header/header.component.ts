@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
         src="http://pluspng.com/img-png/sony-logo-eps-png-sony-sony-hd-png-6000.png"
         alt="sony"
       />
-      <a (click)="goToSingInPage()" routerLinkActive="active">Sign in</a>
+      <a (click)="goToSingInPage()">Sign in</a>
     </div>
   `,
   styleUrls: ['./header.component.scss'],
@@ -21,6 +21,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
 
   goToSingInPage() {
-    this.router.navigate(['/login']);
+    this.openSignInModal.emit();
   }
 }

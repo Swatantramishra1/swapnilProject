@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SignInComponent } from './components/sign-in.component';
+import { SignInPageAdapter } from './service/signIn.adapter';
 
 const routes: Routes = [
   {
@@ -15,5 +16,6 @@ const routes: Routes = [
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
   declarations: [SignInComponent],
+  providers: [SignInPageAdapter],
 })
 export class SignInPageModule {}

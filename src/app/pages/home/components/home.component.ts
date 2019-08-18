@@ -6,6 +6,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
     <app-header (openSignInModal)="openModal()"></app-header>
     <div class="homeContainer">
       <app-home-content></app-home-content>
+      <app-sign-in *ngIf="isOpenSignInModal"></app-sign-in>
     </div>
     <app-footer></app-footer>
   `,
@@ -19,7 +20,6 @@ export class HomeComponent implements OnInit {
 
   openModal() {
     this.isOpenSignInModal = true;
-    this.openSignInModal.emit();
   }
 
   closeModal() {

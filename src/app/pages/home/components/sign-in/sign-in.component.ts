@@ -1,17 +1,13 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
-import { SignInPageAdapter as Adapter } from '../service/signIn.adapter';
-
 @Component({
-  selector: 'app-home',
+  selector: 'app-sign-in',
   templateUrl: './sign-in-component.html',
-  styleUrls: ['../styles/sign-in.component.scss'],
+  styleUrls: ['../../styles/sign-in.style.scss'],
 })
 export class SignInComponent implements OnInit {
   @Output() openSignInModal: EventEmitter<void> = new EventEmitter();
   isOpenSignInModal = false;
-
-  constructor(private adapter: Adapter) {}
 
   ngOnInit(): void {}
 
@@ -22,9 +18,5 @@ export class SignInComponent implements OnInit {
 
   closeModal() {
     this.isOpenSignInModal = false;
-  }
-
-  login() {
-    this.adapter.signIn('swata', 'ssss');
   }
 }

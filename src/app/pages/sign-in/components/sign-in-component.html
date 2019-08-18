@@ -1,22 +1,25 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
+<header>Sony Project</header>
 
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+<div class="container flex">
+  <div class="input">
+    <div class="label">
+      User ID
     </div>
-
-    <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login" />
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" />
-      <input type="submit" class="fadeIn fourth" value="Log In" />
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+    <div class="text">
+      <input type="text" />
     </div>
+  </div>
+
+  <div class="input">
+    <div class="label">
+      Password
+    </div>
+    <div class="text">
+      <input type="password" />
+    </div>
+  </div>
+
+  <div class="button">
+    <button (click)="login()">Login</button>
   </div>
 </div>
