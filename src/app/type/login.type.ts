@@ -4,4 +4,8 @@ export interface User {
   Name: string;
   companycode: string;
   Email: string;
+  MenuId: string;
+  PmenuId: string;
+  MenuDes: string;
+  CountryCode: string;
 }

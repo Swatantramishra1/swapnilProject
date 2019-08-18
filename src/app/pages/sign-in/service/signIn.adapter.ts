@@ -1,15 +1,22 @@
-import { Injectable } from '@angular/core';
-import { Store, select } from '@ngrx/store';
+import { Injectable } from "@angular/core";
+import { Store, select } from "@ngrx/store";
 
-import { LoginStoreActions, StoreState, LoginStoreSelectors } from 'src/app/store';
+import {
+  LoginStoreActions,
+  StoreState,
+  LoginStoreSelectors
+} from "src/app/store";
 
 @Injectable()
 export class SignInPageAdapter {
   constructor(private store: Store<StoreState>) {}
 
   error$ = this.store.pipe(select(LoginStoreSelectors.selecterror));
+  user$ = this.store.pipe(select(LoginStoreSelectors.selectuser));
 
   signIn(userid: string, password: string) {
-    this.store.dispatch(new LoginStoreActions.SignInRequestAction({ userid, password }));
+    this.store.dispatch(
+      new LoginStoreActions.SignInRequestAction({ userid, password })
+    );
   }
 }
