@@ -1,30 +1,61 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ElementRef,
+  ViewChild,
+  SimpleChanges,
+  OnChanges,
+  Input,
+} from '@angular/core';
 
 import { SignInPageAdapter as Adapter } from '../service/signIn.adapter';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-sign',
   templateUrl: './sign-in-component.html',
   styleUrls: ['../styles/sign-in.component.scss'],
 })
-export class SignInComponent implements OnInit {
-  @Output() openSignInModal: EventEmitter<void> = new EventEmitter();
+export class SignInComponent implements OnInit, OnChanges {
+  constructor(private adapter: Adapter) {}
+  @Output() handleSignIn: EventEmitter<{ userid; password }> = new EventEmitter();
+  @Input() error: any;
   isOpenSignInModal = false;
 
-  constructor(private adapter: Adapter) {}
+  @ViewChild('userid') useridEl: ElementRef;
+  @ViewChild('password') passwordEl: ElementRef;
 
+  response: any;
   ngOnInit(): void {}
-
-  openModal() {
-    this.isOpenSignInModal = true;
-    this.openSignInModal.emit();
-  }
 
   closeModal() {
     this.isOpenSignInModal = false;
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    let change;
+    if (changes.hasOwnProperty('error')) {
+      change = changes.error;
+    }
+
+    if (change) {
+      if (!change.firstChange && change.previousValue !== change.currentValue) {
+        if (change.currentValue) {
+          this.response = change.currentValue;
+          if (this.response) {
+            alert('not success');
+          } else {
+            alert('success');
+          }
+        }
+      }
+    }
+  }
+
   login() {
-    this.adapter.signIn('swata', 'ssss');
+    const userid = this.useridEl.nativeElement.value;
+    const password = this.passwordEl.nativeElement.value;
+    this.handleSignIn.emit({ userid, password });
   }
 }
