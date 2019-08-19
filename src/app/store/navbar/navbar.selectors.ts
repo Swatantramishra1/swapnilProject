@@ -1,20 +1,20 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store";
-import { LoginState } from "./login.state";
+import { NavBarState } from "./navbar.state";
 
-export const selectFeature = createFeatureSelector<LoginState>("login");
+export const selectFeature = createFeatureSelector<NavBarState>("navbar");
 
-export const selectuser = createSelector(
+export const selectnavbar = createSelector(
   selectFeature,
-  (state: LoginState) => {
+  (state: NavBarState) => {
     if (state) {
-      return state.user;
+      return state.navBar;
     } else return null;
   }
 );
 
 export const selecterror = createSelector(
   selectFeature,
-  (state: LoginState) => {
+  (state: NavBarState) => {
     if (state) {
       return state.error;
     } else {

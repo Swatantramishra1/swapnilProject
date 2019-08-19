@@ -12,7 +12,7 @@ import {
 
 import { SignInPageAdapter as Adapter } from '../service/signIn.adapter';
 import { User } from 'src/app/type/login.type';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign',
@@ -20,7 +20,7 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['../styles/sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit, OnChanges {
-  constructor(private adapter: Adapter, private route: Router) {}
+  constructor(private adapter: Adapter, private router: Router) {}
   @Output() handleSignIn: EventEmitter<{
     userid;
     password;
@@ -53,10 +53,12 @@ export class SignInComponent implements OnInit, OnChanges {
           if (this.response) {
             alert('not success');
           } else {
-            this.route.navigate(['/home']);
+            this.router.navigate(['home']);
           }
         }
       }
+    } else {
+      this.router.navigate(['login']);
     }
   }
 

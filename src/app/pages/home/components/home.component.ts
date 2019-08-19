@@ -1,28 +1,43 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  Input,
+  SimpleChanges,
+  OnChanges
+} from "@angular/core";
+import { User } from "src/app/type/login.type";
 
 @Component({
-  selector: 'app-home',
+  selector: "app-home",
   template: `
-    <app-header (openSignInModal)="openModal()"></app-header>
+    <app-header></app-header>
     <div class="homeContainer">
-      <app-home-content></app-home-content>
-      <app-sign-in *ngIf="isOpenSignInModal"></app-sign-in>
+      <app-home-content [navbar]="navbar"></app-home-content>
     </div>
     <app-footer></app-footer>
   `,
-  styleUrls: ['../styles/home.style.scss'],
+  styleUrls: ["../styles/home.style.scss"]
 })
-export class HomeComponent implements OnInit {
-  @Output() openSignInModal: EventEmitter<void> = new EventEmitter();
-  isOpenSignInModal = false;
+export class HomeComponent implements OnInit, OnChanges {
+  @Input() user: User;
+  @Input() navbar: any;
 
-  ngOnInit(): void {}
+  @Output() handleNavBar: EventEmitter<string> = new EventEmitter();
 
-  openModal() {
-    this.isOpenSignInModal = true;
+  ngOnInit(): void {
+    console.log(this.user);
   }
 
-  closeModal() {
-    this.isOpenSignInModal = false;
+  ngOnChanges(changes: SimpleChanges) {
+    const change = changes["user"];
+    console.log(change);
+    debugger;
+    if (change) {
+      if (change.currentValue) {
+        this.handleNavBar.emit(change.currentValue.Global_Id);
+      }
+    }
   }
 }

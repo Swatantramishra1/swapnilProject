@@ -17,4 +17,9 @@ export class ApiService {
     const url = this.apiHostUrl + endPoint;
     return this.http.get<User>(url).pipe(map(res => res));
   }
+
+  fetchNavBar(endPoint: string): Observable<any> {
+    const url = this.apiHostUrl + endPoint;
+    return this.http.get<any>(url).pipe(map(res => res));
+  }
 }
