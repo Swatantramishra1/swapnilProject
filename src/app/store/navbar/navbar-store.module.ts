@@ -4,15 +4,15 @@ import { NgModule } from "@angular/core";
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 
-import { loginReducer } from "./login.reducer";
-import { LoginStoreEffects } from "./login.effects";
+import { navbarReducer } from "./navba.reducer";
+import { NavBarStoreEffects } from "./navbar.effects";
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature("login", loginReducer),
-    EffectsModule.forFeature([LoginStoreEffects])
+    StoreModule.forFeature("navbar", navbarReducer),
+    EffectsModule.forFeature([NavBarStoreEffects])
   ],
   providers: []
 })
-export class LoginStoreModule {}
+export class NavBarStoreModule {}

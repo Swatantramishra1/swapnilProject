@@ -1,29 +1,29 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule, PreloadAllModules } from "@angular/router";
 
-import { SharedModule } from '../app/shared/shared.module';
+import { SharedModule } from "../app/shared/shared.module";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     children: [
       {
-        path: '',
-        redirectTo: 'home',
-        pathMatch: 'full',
+        path: "",
+        redirectTo: "login",
+        pathMatch: "full"
       },
       {
-        path: 'home',
-        loadChildren: './pages/home/home.module#HomePageModule',
-        data: { preload: true },
+        path: "home",
+        loadChildren: "./pages/home/home.module#HomePageModule",
+        data: { preload: true }
       },
       {
-        path: 'login',
-        loadChildren: './pages/sign-in/sign-in.module#SignInPageModule',
-        data: { preload: true },
-      },
-    ],
-  },
+        path: "login",
+        loadChildren: "./pages/sign-in/sign-in.module#SignInPageModule",
+        data: { preload: true }
+      }
+    ]
+  }
 ];
 
 @NgModule({
@@ -31,10 +31,10 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       enableTracing: false,
       preloadingStrategy: PreloadAllModules,
-      onSameUrlNavigation: 'reload',
+      onSameUrlNavigation: "reload"
     }),
-    SharedModule.forRoot(),
+    SharedModule.forRoot()
   ],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

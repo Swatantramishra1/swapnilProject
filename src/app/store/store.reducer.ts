@@ -1,17 +1,26 @@
-import { routerReducer } from '@ngrx/router-store';
-import { ActionReducerMap, MetaReducer, ActionReducer, Action } from '@ngrx/store';
-import { storeFreeze } from 'ngrx-store-freeze';
+import { routerReducer } from "@ngrx/router-store";
+import {
+  ActionReducerMap,
+  MetaReducer,
+  ActionReducer,
+  Action
+} from "@ngrx/store";
+import { storeFreeze } from "ngrx-store-freeze";
 
-import { loginReducer } from './login/login.reducer';
-import { StoreState } from './store.state';
-import { LoginStoreActions } from './login';
+import { loginReducer } from "./login/login.reducer";
+import { StoreState } from "./store.state";
+import { LoginStoreActions } from "./login";
+import { navbarReducer } from "./navbar/navba.reducer";
 
 export const rootReducer: ActionReducerMap<StoreState> = {
   login: loginReducer,
-  router: routerReducer,
+  navbar: navbarReducer,
+  router: routerReducer
 };
 
-export function clearStore(reducer: ActionReducer<StoreState>): ActionReducer<StoreState> {
+export function clearStore(
+  reducer: ActionReducer<StoreState>
+): ActionReducer<StoreState> {
   return function(state: StoreState, action: Action): StoreState {
     // if (action.type === LoginStoreActions.ActionTypes.LOGOUT) {
     //   state = undefined;
