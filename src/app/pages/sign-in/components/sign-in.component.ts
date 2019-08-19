@@ -7,19 +7,20 @@ import {
   ViewChild,
   SimpleChanges,
   OnChanges,
-  Input
-} from "@angular/core";
+  Input,
+} from '@angular/core';
 
-import { SignInPageAdapter as Adapter } from "../service/signIn.adapter";
-import { User } from "src/app/type/login.type";
+import { SignInPageAdapter as Adapter } from '../service/signIn.adapter';
+import { User } from 'src/app/type/login.type';
+import { Route, Router } from '@angular/router';
 
 @Component({
-  selector: "app-sign",
-  templateUrl: "./sign-in-component.html",
-  styleUrls: ["../styles/sign-in.component.scss"]
+  selector: 'app-sign',
+  templateUrl: './sign-in-component.html',
+  styleUrls: ['../styles/sign-in.component.scss'],
 })
 export class SignInComponent implements OnInit, OnChanges {
-  constructor(private adapter: Adapter) {}
+  constructor(private adapter: Adapter, private route: Router) {}
   @Output() handleSignIn: EventEmitter<{
     userid;
     password;
@@ -28,8 +29,8 @@ export class SignInComponent implements OnInit, OnChanges {
   @Input() user: User;
   isOpenSignInModal = false;
 
-  @ViewChild("userid", { static: false }) useridEl: ElementRef;
-  @ViewChild("password", { static: false }) passwordEl: ElementRef;
+  @ViewChild('userid', { static: false }) useridEl: ElementRef;
+  @ViewChild('password', { static: false }) passwordEl: ElementRef;
 
   response: any;
   ngOnInit(): void {}
@@ -41,7 +42,7 @@ export class SignInComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     let change;
     console.log(changes);
-    if (changes.hasOwnProperty("error")) {
+    if (changes.hasOwnProperty('error')) {
       change = changes.error;
     }
 
@@ -50,9 +51,9 @@ export class SignInComponent implements OnInit, OnChanges {
         if (change.currentValue) {
           this.response = change.currentValue;
           if (this.response) {
-            alert("not success");
+            alert('not success');
           } else {
-            alert("success");
+            this.route.navigate(['/home']);
           }
         }
       }
